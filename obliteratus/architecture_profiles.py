@@ -76,14 +76,14 @@ class ArchitectureProfile:
 _MOE_MODEL_TYPES = {
     "mixtral", "qwen2_moe", "qwen3_moe", "deepseek_v2", "deepseek_v3",
     "dbrx", "grok", "jamba", "arctic", "olmoe", "switch_transformers",
-    "nllb_moe", "llama4",
+    "nllb_moe", "llama4", "glm_moe_dsa",
 }
 
 # Patterns in model name that indicate MoE (fallback when model_type is ambiguous)
 _MOE_NAME_PATTERNS = [
     "moe", "mixtral", "-A3B", "-A22B", "MoE",
     "deepseek-v3",
-    "gpt-oss", "kimi-k2", "glm-4.7",
+    "gpt-oss", "kimi-k2", "glm-4.7", "glm-5",
     "step-3.5", "minimax-m2", "maverick", "scout",
     "mistral-large-3",
     "jamba", "olmoe", "arctic",
@@ -115,6 +115,7 @@ _LARGE_MOE_NAME_PATTERNS = [
     "mistral-large-3", # Mistral Large 3 (675B total)
     "step-3.5",        # Step-3.5 Flash (large MoE)
     "minimax-m2",      # MiniMax-M2 (large MoE)
+    "glm-5",           # GLM-5 / GLM-5.2 (744-753B total)
 ]
 
 # Patterns in model name that indicate reasoning / thinking capability.

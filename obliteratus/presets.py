@@ -1074,6 +1074,24 @@ _PRESETS_LIST = [
         recommended_dtype="bfloat16",
         recommended_quantization="4bit",
     ),
+    ModelPreset(
+        name="GLM-5.2",
+        hf_id="zai-org/GLM-5.2",
+        description="753B MoE (256 routed + 1 shared expert). DSA sparse attn + MLA, multimodal. 200K ctx. MIT.",
+        tier="frontier",
+        params="753B MoE",
+        recommended_dtype="bfloat16",
+        recommended_quantization="4bit",
+    ),
+    ModelPreset(
+        name="GLM-5.2 FP8",
+        hf_id="zai-org/GLM-5.2-FP8",
+        description="753B MoE, native FP8 (~753GB) — lower-memory load; abliteration excise still runs in bf16. MIT.",
+        tier="frontier",
+        params="753B MoE",
+        recommended_dtype="bfloat16",
+        recommended_quantization=None,
+    ),
 
     # ╔══════════════════════════════════════════════════════════════════╗
     # ║  Community Fine-tunes: Uncensored / Abliterated                 ║

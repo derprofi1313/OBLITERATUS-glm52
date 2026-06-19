@@ -710,6 +710,7 @@ _NEEDS_QUANTIZATION = {
     "zai-org/GLM-4.7-Flash",
     "Qwen/Qwen3.5-397B-A17B",
     "zai-org/GLM-5",
+    "zai-org/GLM-5.2",
     "MiniMaxAI/MiniMax-M2.5",
     "deepseek-ai/DeepSeek-V3",
 }
