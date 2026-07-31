@@ -1,0 +1,41 @@
+name: Bug report
+description: Report a reproducible OBLITERATUS defect
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Redact credentials and private model access details. Use SECURITY.md for vulnerability reports.
+  - type: input
+    id: revision
+    attributes:
+      label: Revision
+      description: Commit SHA or release.
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model and revision
+      description: Exact public model identifier and revision, if applicable.
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Minimal command, method, parameters, hardware, and redacted output.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
