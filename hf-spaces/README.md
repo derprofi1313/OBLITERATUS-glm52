@@ -50,8 +50,8 @@ Logged-in HuggingFace users get free GPU quota. For more quota, upgrade to [HF P
 ## Run locally (same UI, your own GPU)
 
 ```bash
-git clone https://github.com/elder-plinius/OBLITERATUS
-cd OBLITERATUS
+git clone https://github.com/derprofi1313/OBLITERATUS-glm52
+cd OBLITERATUS-glm52
 pip install -e ".[spaces]"
 
 # Beautiful launcher with GPU detection + model recommendations
@@ -73,5 +73,6 @@ No GPU hardware selection needed — ZeroGPU handles allocation automatically.
 
 ## Links
 
-- [GitHub](https://github.com/elder-plinius/OBLITERATUS)
-- [Paper](https://github.com/elder-plinius/OBLITERATUS/tree/main/paper)
+- [GitHub](https://github.com/derprofi1313/OBLITERATUS-glm52)
+- [Upstream project](https://github.com/elder-plinius/OBLITERATUS)
+- [Paper](https://github.com/derprofi1313/OBLITERATUS-glm52/tree/main/paper)

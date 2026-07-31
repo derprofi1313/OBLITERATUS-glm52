@@ -28,7 +28,7 @@ short_description: "One-click model liberation + chat playground"
     <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue" alt="Open in HF Spaces">
   </a>
   &nbsp;
-  <a href="https://colab.research.google.com/github/elder-plinius/OBLITERATUS/blob/main/notebooks/abliterate.ipynb">
+  <a href="https://colab.research.google.com/github/derprofi1313/OBLITERATUS-glm52/blob/main/notebooks/abliterate.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
   </a>
 </p>
@@ -38,6 +38,13 @@ short_description: "One-click model liberation + chat playground"
 </p>
 
 ---
+
+> This repository is a maintained GLM-5.2 derivative of
+> [elder-plinius/OBLITERATUS](https://github.com/elder-plinius/OBLITERATUS).
+> Original upstream authorship remains with the upstream project and
+> contributors; this fork carries GLM-5.2 adaptation and maintenance work.
+> This derivative does not grant separate relicensing rights for upstream
+> copyrighted code.
 
 **OBLITERATUS** is the most advanced open-source toolkit for understanding and removing refusal behaviors from large language models — and every single run makes it smarter. It implements abliteration — a family of techniques that identify and surgically remove the internal representations responsible for content refusal, without retraining or fine-tuning. The result: a model that responds to all prompts without artificial gatekeeping, while preserving its core language capabilities.
 
@@ -55,7 +62,7 @@ Built on published research from [Arditi et al. (2024)](https://arxiv.org/abs/24
 obliteratus obliterate meta-llama/Llama-3.1-8B-Instruct --method advanced
 ```
 
-Or zero commands — just [open the Colab notebook](https://colab.research.google.com/github/elder-plinius/OBLITERATUS/blob/main/notebooks/abliterate.ipynb) and hit Run All.
+Or zero commands — just [open the Colab notebook](https://colab.research.google.com/github/derprofi1313/OBLITERATUS-glm52/blob/main/notebooks/abliterate.ipynb) and hit Run All.
 
 ---
 
@@ -181,7 +188,7 @@ The `obliteratus ui` command adds a Rich terminal startup with GPU detection and
 
 ### 3. Google Colab (free GPU)
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/elder-plinius/OBLITERATUS/blob/main/notebooks/abliterate.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/derprofi1313/OBLITERATUS-glm52/blob/main/notebooks/abliterate.ipynb)
 
 Pick a model from the dropdown, pick a method, hit Run All. Download the result or push straight to HuggingFace Hub. Works on the free T4 tier for models up to ~8B parameters.
 
@@ -478,8 +485,8 @@ The `--dtype` flag controls the precision of model weights, which directly deter
 |-------|-----------|---------|----------|-----------|
 | `float32` | 4 | 28 GB | 280 GB | 1620 GB |
 | `float16` / `bfloat16` | 2 | 14 GB | 140 GB | 810 GB |
-| `int8` (via `--quantization bitsandbytes-8bit`) | 1 | 7 GB | 70 GB | 405 GB |
-| `int4` (via `--quantization bitsandbytes-4bit`) | 0.5 | 3.5 GB | 35 GB | 203 GB |
+| `int8` (via `--quantization 8bit`) | 1 | 7 GB | 70 GB | 405 GB |
+| `int4` (via `--quantization 4bit`) | 0.5 | 3.5 GB | 35 GB | 203 GB |
 
 ```bash
 # Default: bfloat16
@@ -487,11 +494,11 @@ obliteratus obliterate meta-llama/Llama-3.1-70B-Instruct
 
 # 8-bit quantization — fits on fewer GPUs
 obliteratus obliterate meta-llama/Llama-3.1-70B-Instruct \
-    --quantization bitsandbytes-8bit
+    --quantization 8bit
 
 # 4-bit quantization — Llama-405B on 4x A100-80GB
 obliteratus obliterate meta-llama/Llama-3.1-405B-Instruct \
-    --quantization bitsandbytes-4bit --dtype float16
+    --quantization 4bit --dtype float16
 ```
 
 Quantization roughly halves the GPU count at each step down. A 70B model that needs 3x A100-80GB in bf16 fits on 2 in int8 or 1 in int4.
@@ -624,7 +631,7 @@ The remote runner:
 | Scenario | Recommendation |
 |----------|---------------|
 | Model fits on 1 GPU | Use 1 GPU. Adding more won't help and may slow things down. |
-| Model almost fits on 1 GPU | Try `--quantization bitsandbytes-8bit` or `bitsandbytes-4bit` to reduce memory. Halving precision roughly halves VRAM. |
+| Model almost fits on 1 GPU | Try `--quantization 8bit` or `--quantization 4bit` to reduce memory. Halving precision roughly halves VRAM. |
 | Model fits on 1 GPU, PROBE is slow (many prompts) | Try `data-parallel-prereplication` branch. Only helps if model fits on each GPU with room for activations. |
 | Model doesn't fit on 1 GPU | Use `--gpus` with the **minimum** number of GPUs that fits. Run `obliteratus gpu-calc` to find that number. |
 | Model needs 4+ GPUs | Pipeline parallel via `device_map="auto"` is the only option. Expect I/O-dominated runtimes for very large models. Consider quantization first — int4 can cut the GPU count by 4x. |
@@ -668,7 +675,7 @@ obliteratus run examples/preset_quick.yaml
 | Analysis-informed abliteration | Yes (closed-loop feedback) | N/A | N/A | N/A | N/A | N/A |
 | Auto parameter optimization | Analysis-guided | N/A | Bayesian (Optuna) | N/A | N/A | N/A |
 | Model compatibility | Any HuggingFace model | ~50 architectures | 16/16 tested | TransformerLens only | HuggingFace | TransformerLens |
-| Test suite | 837 tests | Community | Unknown | None | Minimal | Moderate |
+| Test suite | Broad pytest suite | Community | Unknown | None | Minimal | Moderate |
 
 ## Community-powered research — every run advances the science
 
@@ -761,8 +768,8 @@ If you use OBLITERATUS in your research, please cite:
                Refusal Removal in Large Language Models},
   author    = {{OBLITERATUS Contributors}},
   year      = {2026},
-  url       = {https://github.com/elder-plinius/OBLITERATUS},
-  note      = {15 analysis modules, 837 tests}
+  url       = {https://github.com/derprofi1313/OBLITERATUS-glm52},
+  note      = {Maintained GLM-5.2 derivative of elder-plinius/OBLITERATUS}
 }
 ```
 
@@ -773,7 +780,7 @@ pip install -e ".[dev]"
 pytest
 ```
 
-837 tests across 28 test files covering CLI, all analysis modules, abliteration pipeline, architecture detection, visualization sanitization, community contributions, edge cases, and evaluation metrics.
+The test suite spans CLI behavior, analysis modules, abliteration pipeline, architecture detection, visualization sanitization, community contributions, edge cases, and evaluation metrics.
 
 ## License
 
@@ -781,7 +788,7 @@ pytest
 
 - **Open source** — [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0). You can freely use, modify, and distribute OBLITERATUS under AGPL terms. If you run a modified version as a network service (SaaS), you must release your source code to users under the same license.
 
-- **Commercial** — Organizations that cannot comply with AGPL obligations (e.g., proprietary SaaS, closed-source products, internal tools where source disclosure is not possible) can purchase a commercial license. Contact us via [GitHub Issues](https://github.com/elder-plinius/OBLITERATUS/issues) for pricing and terms.
+- **Commercial** — Organizations that cannot comply with AGPL obligations (e.g., proprietary SaaS, closed-source products, internal tools where source disclosure is not possible) should contact the upstream rights holders via [elder-plinius/OBLITERATUS issues](https://github.com/elder-plinius/OBLITERATUS/issues). This maintained GLM-5.2 derivative does not grant separate relicensing rights for upstream copyrighted code.
 
 This is the same dual-licensing model used by MongoDB, Qt, Grafana, and others.
 

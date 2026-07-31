@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "obliteratus"
 version = "0.1.2"
-description = "Master Ablation Suite for HuggingFace transformers"
+description = "Maintained GLM-5.2 derivative of OBLITERATUS for HuggingFace transformers"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "AGPL-3.0-or-later"}
@@ -38,9 +38,10 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/elder-plinius/OBLITERATUS"
-"Repository" = "https://github.com/elder-plinius/OBLITERATUS"
-"Bug Tracker" = "https://github.com/elder-plinius/OBLITERATUS/issues"
+"Homepage" = "https://github.com/derprofi1313/OBLITERATUS-glm52"
+"Repository" = "https://github.com/derprofi1313/OBLITERATUS-glm52"
+"Bug Tracker" = "https://github.com/derprofi1313/OBLITERATUS-glm52/issues"
+"Upstream" = "https://github.com/elder-plinius/OBLITERATUS"
 
 [project.optional-dependencies]
 dev = ["pytest>=7.0", "pytest-cov", "ruff", "mypy"]

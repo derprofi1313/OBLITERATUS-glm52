@@ -21,6 +21,10 @@ import re
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from obliteratus.adaptive_defaults import AdaptiveRecommendation
 
 logger = logging.getLogger(__name__)
 

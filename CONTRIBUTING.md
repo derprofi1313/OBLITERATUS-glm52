@@ -5,8 +5,8 @@ Thanks for your interest in contributing. This document covers everything you ne
 ## Development Setup
 
 ```bash
-git clone https://github.com/elder-plinius/OBLITERATUS.git
-cd OBLITERATUS
+git clone https://github.com/derprofi1313/OBLITERATUS-glm52.git
+cd OBLITERATUS-glm52
 pip install -e ".[dev]"
 ```
 
@@ -15,7 +15,7 @@ This installs the package in editable mode with test dependencies (pytest, ruff)
 ## Running Tests
 
 ```bash
-pytest                    # full suite (823 tests)
+pytest                    # full suite
 pytest tests/test_abliterate.py  # single file
 pytest -x                 # stop on first failure
 pytest -k "test_name"     # run specific test
@@ -91,7 +91,7 @@ obliteratus/
   models/                # Model loading utilities
   reporting/             # Report generation
   strategies/            # Ablation strategies (layer, head, FFN, embedding)
-tests/                   # 28 test files
+tests/                   # pytest suite
 paper/                   # LaTeX paper
 examples/                # YAML config examples
 ```
